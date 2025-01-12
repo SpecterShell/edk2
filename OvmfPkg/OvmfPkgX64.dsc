@@ -1055,3 +1055,8 @@
   # TPM support
   #
 !include OvmfPkg/Include/Dsc/OvmfTpmComponentsDxe.dsc.inc
+
+MdeModulePkg/Universal/UptimeDxe/UptimeDxe.inf
+MdeModulePkg/Application/UptimeApp/UptimeApp.inf
+MdeModulePkg/Universal/FlashDxe/FlashDxe.inf
+MdeModulePkg/Application/FlashApp/FlashApp.inf

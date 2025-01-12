@@ -1,0 +1,34 @@
+## @file
+# Generic Uptime driver producing Uptime Protocol using UEFI APIs.
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = UptimeDxe
+  FILE_GUID                      = 0BE98FC0-354E-49E2-A507-A72FC52A89E4
+  MODULE_TYPE                    = UEFI_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = UptimeDriverInitialize
+
+[Packages]
+  MdePkg/MdePkg.dec
+  EmbeddedPkg/EmbeddedPkg.dec
+
+[Sources]
+  UptimeDxe.c
+
+[LibraryClasses]
+  DebugLib
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  TimerLib
+  TimeBaseLib
+  BaseMemoryLib
+
+[Protocols]
+  gEfiUptimeProtocolGuid
+  gEfiUptimeVendorGuid
+
+[Depex]
+  TRUE

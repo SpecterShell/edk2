@@ -412,6 +412,9 @@ INF OvmfPkg/Tcg/TdTcg2Dxe/TdTcg2Dxe.inf
 !include OvmfPkg/Include/Fdf/MorLock.fdf.inc
 !include OvmfPkg/Include/Fdf/OvmfRngDxe.fdf.inc
 
+INF  MdeModulePkg/Universal/UptimeDxe/UptimeDxe.inf
+INF  MdeModulePkg/Universal/FlashDxe/FlashDxe.inf
+
 ################################################################################
 
 [FV.FVMAIN_COMPACT]

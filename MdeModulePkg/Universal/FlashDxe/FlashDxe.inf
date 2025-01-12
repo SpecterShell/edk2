@@ -1,0 +1,34 @@
+[Defines]
+  INF_VERSION    = 0x00010005
+  BASE_NAME      = FlashDxe
+  FILE_GUID      = 86DF0E04-F925-432C-85D8-2ED7F0B7CE3B
+  MODULE_TYPE    = DXE_RUNTIME_DRIVER
+  VERSION_STRING = 1.0
+  ENTRY_POINT    = FlashDriverInitialize
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  OvmfPkg/OvmfPkg.dec
+
+[Sources]
+  FlashDxe.c
+
+[LibraryClasses]
+  DebugLib
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  UefiRuntimeLib
+  BaseMemoryLib
+
+[FixedPcd]
+  gUefiOvmfPkgTokenSpaceGuid.PcdOvmfFdBaseAddress
+  gUefiOvmfPkgTokenSpaceGuid.PcdOvmfFirmwareFdSize
+
+[Protocols]
+  gEfiFlashProtocolGuid
+  gEfiFlashVendorGuid
+
+[Depex]
+  TRUE

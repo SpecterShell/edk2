@@ -22,6 +22,8 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 #include <Protocol/SimpleTextIn.h>
 #include <Protocol/SimpleTextInEx.h>
 #include <Protocol/SimpleTextOut.h>
+#include <Protocol/Uptime.h>
+#include <Protocol/Flash.h>
 
 ///
 /// Enumeration of EFI memory allocation types.
@@ -1825,6 +1827,28 @@ EFI_STATUS
   OUT UINT64            *MaximumVariableSize
   );
 
+typedef
+EFI_STATUS
+(EFIAPI *EFI_GET_FLASH_SIZE)(
+  OUT   UINTN           *FlashSize
+  );
+
+typedef
+EFI_STATUS
+(EFIAPI *EFI_READ_FLASH)(
+  IN     UINTN          Offset,
+  IN OUT UINTN          *DataSize,
+  OUT    VOID           *Data
+  );
+
+typedef
+EFI_STATUS
+(EFIAPI *EFI_WRITE_FLASH)(
+  IN     UINTN          Offset,
+  IN OUT UINTN          *DataSize,
+  OUT    VOID           *Data
+  );
+
 //
 // Firmware should stop at a firmware user interface on next boot
 //
@@ -1906,6 +1930,20 @@ typedef struct {
   // Miscellaneous UEFI 2.0 Service
   //
   EFI_QUERY_VARIABLE_INFO           QueryVariableInfo;
+
+  //
+  // Uptime Service
+  //
+  EFI_UPTIME_GET_ELAPSED            GetUptime;
+  EFI_UPTIME_GET_STARTING           GetStartingTimestamp;
+  EFI_UPTIME_GET_CURRENT            GetCurrentTimestamp;
+
+  //
+  // Flash Service
+  //
+  EFI_FLASH_GET_PROPERTY            GetFlashProperty;
+  EFI_FLASH_READ                    ReadFlash;
+  EFI_FLASH_WRITE                   WriteFlash;
 } EFI_RUNTIME_SERVICES;
 
 #define EFI_BOOT_SERVICES_SIGNATURE  SIGNATURE_64 ('B','O','O','T','S','E','R','V')
